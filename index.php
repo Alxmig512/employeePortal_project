@@ -1,10 +1,8 @@
 <?php
-
-if (!isset($_SESSION['id'])) {
-    header("Location: login.php"); // Redirect to dashboard if already logged in
+if (!isset($_COOKIE['user'])) {
+    header("Location: login.php");
     exit();
 }
-
 ?>
 
 <!doctype html>

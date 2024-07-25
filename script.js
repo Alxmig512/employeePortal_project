@@ -192,7 +192,7 @@ deleteButton.addEventListener('click', () => {
 // Funktion zum Speichern der neuen Daten in der Datenbank
 function saveDataToServer(newData) {
     $.ajax({
-        url: 'http://localhost/sqltest.php',
+        url: 'http://localhost/csw_project/sqltest.php',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({ action: 'add', data: newData }),
@@ -214,7 +214,7 @@ function saveDataToServer(newData) {
 // Funktion zum Aktualisieren der Daten auf dem Server
 function updateDataOnServer(action, editedData) {
     $.ajax({
-        url: 'http://localhost/sqltest.php',
+        url: 'http://localhost/csw_project/sqltest.php',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({ action, data: editedData }),
@@ -236,7 +236,7 @@ function updateDataOnServer(action, editedData) {
 // Funktion zum Löschen der Daten auf dem Server
 function deleteDataFromServer(action, deletedData) {
     $.ajax({
-        url: 'http://localhost/sqltest.php',
+        url: 'http://localhost/csw_project/sqltest.php',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({ action, data: deletedData }),
@@ -258,7 +258,7 @@ function deleteDataFromServer(action, deletedData) {
 // Funktion zum Abrufen der neuesten Daten vom Server
 function fetchDataFromServer() {
     $.ajax({
-        url: 'http://localhost/sqltest.php', // Endpunkt, der alle Daten zurückgibt
+        url: 'http://localhost/csw_project/sqltest.php', // Endpunkt, der alle Daten zurückgibt
         type: 'GET',
         dataType: 'json',
         success: function(response) {

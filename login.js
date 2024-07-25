@@ -59,14 +59,14 @@ $('#resetPasswordForm').submit(function(e) {
 
 function loginUser(username, password) {
     $.ajax({
-        url: 'http://localhost/login.php',
+        url: 'http://localhost/csw_project/login.php',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({ action: 'login', username: username, password: password }),
         success: function(response) {
             //const result = JSON.parse(response);
             if (response.success) {
-                window.location.href = 'index.html';
+                window.location.href = 'index.php';
             } else {
                 alert(response.message);
             }
@@ -80,7 +80,7 @@ function loginUser(username, password) {
 // Funktion zur Registrierung
 function registerUser( vorname, nachname, adresse, abteilung, telefon, username, password, confirmPassword ) {
     $.ajax({
-        url: 'http://localhost/login.php',
+        url: 'http://localhost/csw_project/login.php',
         type: 'POST',
         contentType: 'application/json',
         dataType:'json',
@@ -101,7 +101,7 @@ function registerUser( vorname, nachname, adresse, abteilung, telefon, username,
             console.log('Geparste Antwort:', response);
 
             if (response.success) {
-                alert('Registrierung erfolgreich');
+                window.location.href = 'index.php';
                 regmodal.hide(); 
             } else {
                 alert(response.message);
@@ -117,7 +117,7 @@ function registerUser( vorname, nachname, adresse, abteilung, telefon, username,
 // Funktion zum Passwort zurücksetzen
 function resetPassword(username) {
     $.ajax({
-        url: 'http://localhost/login.php',
+        url: 'http://localhost/csw_project/login.php',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({ action: 'forgot', username: username }),
