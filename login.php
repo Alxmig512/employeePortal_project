@@ -21,8 +21,7 @@ class AuthManagement {
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($user && password_verify($username['password'], $user['passwort'])) {
-                //$_SESSION['username'] = $username['username'];
-                //$_SESSION['logged_in'] = true;
+                //Cookie mit Ablauf wird hier generiert, um die Session dem User zuzuweisen
                 setcookie("user", $user['username'], time() + (86400 * 30), "/");
                 echo json_encode(['success' => true, 'message' => 'Login erfolgreich']);
             } else {
@@ -54,6 +53,7 @@ class AuthManagement {
                 'username'   => $data['username'],
                 'passwort'   => password_hash($data['password'], PASSWORD_BCRYPT),
             ]);
+            //Session wird generiert mit Ablauf
             setcookie("user", $data['username'], time() + (86400 * 30), "/");
             echo json_encode(['success' => true, 'message' => 'Registrierung erfolgreich']);
         } catch (\PDOException $e) {

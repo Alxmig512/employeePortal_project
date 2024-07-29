@@ -2,8 +2,6 @@
 // index.php
 session_start();
 
-//Erstelle mir hier eine Lösung, sodass ich nur mit Anmeldung die Seite aufrufen kann ansonsten soll eine Fehlermeldung erscheinen und ich soll nicht mit den Daten aus der Datenbank arbeiten.
-
 
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
@@ -101,5 +99,6 @@ switch ($action) {
         Workmanagement::getallworkers($pdo);
         break;
 }
+
 ?>
 

@@ -1,4 +1,5 @@
-// Event Listener für Login
+import { faker } from "https://esm.sh/@faker-js/faker@v8.4.0/locale/de";
+
 const registerButton = document.getElementById("registrationlink");
 const regmodal = new bootstrap.Modal('#registerModal');
 
@@ -135,3 +136,31 @@ function resetPassword(username) {
         }
     });
 }
+
+const generateRandomWorker = () => {
+    return {
+        vorname: faker.name.firstName(),
+        nachname: faker.name.lastName(),
+        adresse: faker.address.streetAddress(),
+        abteilung: faker.commerce.department(),
+        telefon: faker.phone.number(),
+        username: faker.internet.userName(),
+        password: faker.internet.password(),
+    };
+};
+
+document.getElementById('generateRdmBtn').addEventListener('click', function() {
+    const randomWorker = generateRandomWorker();
+    
+    // Hier wird die Funktion `registerUser` verwendet, um den zufälligen Benutzer zu registrieren.
+    registerUser(
+        randomWorker.vorname,
+        randomWorker.nachname,
+        randomWorker.adresse,
+        randomWorker.abteilung,
+        randomWorker.telefon,
+        randomWorker.username,
+        randomWorker.password,
+        randomWorker.confirmPassword // confirmPassword, da es sich um eine zufällige Erstellung handelt
+    );
+});
