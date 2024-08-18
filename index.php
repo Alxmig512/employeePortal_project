@@ -91,6 +91,7 @@ if (!isset($_COOKIE['user'])) {
                     </div>
                     <div class="modal-body">
                         <form>
+
                             <!-- Vorherige Felder bleiben unverändert -->
                             <div class="form-group">
                                 <label for="vorname" class="col-form-label">Vorname</label>
@@ -119,6 +120,9 @@ if (!isset($_COOKIE['user'])) {
                             <div class="form-group">
                                 <label for="passwort" class="col-form-label">Passwort</label>
                                 <input type="password" class="form-control" id="passwort">
+                                <div id="password-strength" class="strength-bar">
+                                    <p id="password-strength-text"></p>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="confirm-passwort" class="col-form-label">Passwort bestätigen</label>
@@ -134,6 +138,7 @@ if (!isset($_COOKIE['user'])) {
                 </div>
             </div>
         </div>
+
 
         <!-- Modal für Bearbeiten -->
         <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

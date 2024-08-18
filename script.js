@@ -335,3 +335,42 @@ document.getElementById('generateBtn').addEventListener('click', function() {
     const randomWorker = generateRandomWorker();
     saveDataToServer(randomWorker);
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    var passwordInput = document.getElementById('passwort');
+    var strengthBar = document.getElementById('password-strength');
+    var strengthText = document.getElementById('password-strength-text');
+
+    passwordInput.addEventListener('input', function() {
+        var password = this.value;
+        var strength = 0;
+
+        // Passwort-Sicherheitsregeln
+        if (password.length > 7) strength += 1; // Länge über 7 Zeichen
+        if (/[a-z]/.test(password)) strength += 1; // Kleinbuchstaben
+        if (/[A-Z]/.test(password)) strength += 1; // Großbuchstaben
+        if (/[0-9]/.test(password)) strength += 1; // Zahlen
+        if (/[^a-zA-Z0-9]/.test(password)) strength += 1; // Sonderzeichen
+
+        // Stärke Prozentzahl basierend auf den Kriterien
+        var strengthPercentage = (strength / 5) * 100; // Stärke auf 100% skalieren
+
+        // Breite der Leiste anpassen
+        strengthBar.style.width = strengthPercentage + '%';
+        strengthBar.style.height = '5px';
+        strengthBar.style.marginTop = '10px';
+        strengthBar.style.marginBottom = '10px';
+
+
+        if (strengthPercentage < 40) {
+            strengthBar.style.backgroundColor = 'red';
+            strengthText.textContent = 'Schwach';
+        } else if (strengthPercentage < 70) {
+            strengthBar.style.backgroundColor = 'yellow';
+            strengthText.textContent = 'Mittel';
+        } else {
+            strengthBar.style.backgroundColor = 'green';
+            strengthText.textContent = 'Stark';
+        }
+    });
+});

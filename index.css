@@ -77,3 +77,16 @@
 .is-valid {
     border-color: #28a745;
 }
+
+.strength-bar {
+    height: 5px !important;
+    background: linear-gradient(to right, red, yellow, green) !important;
+    margin-top: 10px !important;
+    border-radius: 5px !important;
+    transition: width 0.5s !important;
+}
+
+#password-strength-text {
+  margin-top: 10px; /* Abstand nach oben */
+  font-weight: bold; /* Text fett */
+}
